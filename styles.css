@@ -120,7 +120,7 @@ input[type="text"]:focus {
 }
 
 .submit-btn:hover {
-  background-color: #d66e0d;
+  background-color: #c76b16;
 }
 
 .submit-btn:active {
@@ -154,7 +154,7 @@ input[type="text"]:focus {
   font-weight: 800;
   color: #A6580F;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 30px rgba(247, 187, 131, 0.4);
+  text-shadow: 0 0 30px rgba(247, 187, 131, 0.7);
   animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
