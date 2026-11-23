@@ -5,8 +5,8 @@
 }
 
 body {
-  background-color: #0f1115;
-  color: #e0e6ed;
+  background-color: #EEEEE6;
+  color: #212621;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   display: flex;
@@ -37,9 +37,8 @@ body {
 h1 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #A6580F;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .input-wrapper {
@@ -153,10 +152,9 @@ input[type="text"]:focus {
 .congrats-text {
   font-size: clamp(2.5rem, 8vw, 6rem);
   font-weight: 800;
-  color: #10b981;
-  text-transform: uppercase;
+  color: #A6580F;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+  text-shadow: 0 0 30px rgba(247, 187, 131, 0.4);
   animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
