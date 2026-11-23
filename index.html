@@ -12,7 +12,10 @@
 <body>
 
   <div class="container" id="gameWindow">
-    <h1>Ievadiet paroli</h1>
+    <div class="header-group">
+      <h1>Ievadiet paroli</h1>
+      <p class="password-length" id="passwordLength"></p>
+    </div>
     <div class="input-wrapper">
       <input type="text" id="passwordInput" autocomplete="off" spellcheck="false" placeholder="Raksti šeit..." />
       <div class="input-display" id="inputDisplay"></div>
@@ -28,6 +31,7 @@
     const SECRET_KEYWORD = "Zvīņas"; // Case-insensitive target password
 
     const passwordInput = document.getElementById('passwordInput');
+    const passwordLengthEl = document.getElementById('passwordLength');
     const inputDisplay = document.getElementById('inputDisplay');
     const submitBtn = document.getElementById('submitBtn');
     const gameWindow = document.getElementById('gameWindow');
@@ -35,17 +39,18 @@
 
     let isEvaluated = false;
 
-    function syncMaxLength() {
+    function syncPasswordConfig() {
       const maxChars = SECRET_KEYWORD.length;
       passwordInput.maxLength = maxChars;
+      passwordLengthEl.textContent = `Rakstzīmju skaits: ${maxChars}`;
 
       if (passwordInput.value.length > maxChars) {
         passwordInput.value = passwordInput.value.slice(0, maxChars);
       }
     }
 
-    // Automatically enforces the character limit based on SECRET_KEYWORD.length
-    syncMaxLength();
+    // Automatically enforces max length and displays current password length
+    syncPasswordConfig();
 
     function updateDisplay(evaluated = false) {
       const val = passwordInput.value;
@@ -92,7 +97,7 @@
     }
 
     passwordInput.addEventListener('input', () => {
-      syncMaxLength();
+      syncPasswordConfig();
       if (passwordInput.value.length > SECRET_KEYWORD.length) {
         passwordInput.value = passwordInput.value.slice(0, SECRET_KEYWORD.length);
       }
