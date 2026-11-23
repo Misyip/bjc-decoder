@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Unlock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container" id="gameWindow">
+    <h1>Enter Password</h1>
+    <div class="input-wrapper">
+      <input type="text" id="passwordInput" autocomplete="off" spellcheck="false" placeholder="Type password..." />
+      <div class="input-display" id="inputDisplay"></div>
+    </div>
+    <button class="submit-btn" id="submitBtn">Submit</button>
+  </div>
+
+  <div class="congrats-overlay" id="congratsScreen">
+    <div class="congrats-text">Congratulations!</div>
+  </div>
+
+  <script>
+    const SECRET_KEYWORD = "SECRET"; // Case-insensitive target password
+
+    const passwordInput = document.getElementById('passwordInput');
+    const inputDisplay = document.getElementById('inputDisplay');
+    const submitBtn = document.getElementById('submitBtn');
+    const gameWindow = document.getElementById('gameWindow');
+    const congratsScreen = document.getElementById('congratsScreen');
+
+    let isEvaluated = false;
+
+    function updateDisplay(evaluated = false) {
+      const val = passwordInput.value;
+      inputDisplay.innerHTML = '';
+
+      if (val.length === 0) {
+        return;
+      }
+
+      const secretUpper = SECRET_KEYWORD.toUpperCase();
+
+      for (let i = 0; i < val.length; i++) {
+        const char = val[i];
+        const span = document.createElement('span');
+        span.textContent = char;
+
+        if (evaluated) {
+          const charUpper = char.toUpperCase();
+          if (secretUpper.includes(charUpper)) {
+            span.className = 'char-orange'; // Character exists in secret password
+          } else {
+            span.className = 'char-red';    // Character does not exist in secret password
+          }
+        } else {
+          span.className = 'char-normal';
+        }
+
+        inputDisplay.appendChild(span);
+      }
+    }
+
+    function checkPassword() {
+      const inputVal = passwordInput.value.trim();
+
+      if (!inputVal) return;
+
+      if (inputVal.toUpperCase() === SECRET_KEYWORD.toUpperCase()) {
+        gameWindow.classList.add('hidden');
+        congratsScreen.classList.add('active');
+      } else {
+        isEvaluated = true;
+        updateDisplay(true);
+      }
+    }
+
+    passwordInput.addEventListener('input', () => {
+      if (isEvaluated) {
+        isEvaluated = false;
+      }
+      updateDisplay(false);
+    });
+
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
+    submitBtn.addEventListener('click', checkPassword);
+  </script>
+</body>
+</html>
