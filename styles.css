@@ -97,12 +97,12 @@ input[type="text"]:focus {
 
 /* Colors for character matching */
 .char-normal {
-  color: #f8fafc;
+  color: #212621;
 }
 
 .char-orange {
-  color: #f97316;
-  text-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+  color: #A6580F;
+  text-shadow: 0 0 8px rgba(247, 187, 131, 0.4);
 }
 
 .submit-btn {
@@ -111,8 +111,8 @@ input[type="text"]:focus {
   font-family: inherit;
   font-size: 1.0rem;
   font-weight: 600;
-  color: #f8fafc;
-  background-color: #2563eb;
+  color: #EEEEE6;
+  background-color: #A6580F;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -120,7 +120,7 @@ input[type="text"]:focus {
 }
 
 .submit-btn:hover {
-  background-color: #1d4ed8;
+  background-color: #d66e0d;
 }
 
 .submit-btn:active {
