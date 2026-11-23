@@ -101,11 +101,6 @@ input[type="text"]:focus {
   color: #f8fafc;
 }
 
-.char-red {
-  color: #f8fafc;
-  text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
-}
-
 .char-orange {
   color: #f97316;
   text-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
