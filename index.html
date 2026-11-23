@@ -53,7 +53,10 @@
         if (evaluated) {
           const charUpper = char.toUpperCase();
           if (secretUpper.includes(charUpper)) {
-            span.className = 'char-orange'; // Character exists in secret password
+            span.className = 'char-orange'; // Symbol exists in target password
+          } else {
+            span.className = 'char-normal'; // Incorrect symbols retain default text color
+          }
         } else {
           span.className = 'char-normal';
         }
