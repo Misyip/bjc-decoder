@@ -35,6 +35,18 @@
 
     let isEvaluated = false;
 
+    function syncMaxLength() {
+      const maxChars = SECRET_KEYWORD.length;
+      passwordInput.maxLength = maxChars;
+
+      if (passwordInput.value.length > maxChars) {
+        passwordInput.value = passwordInput.value.slice(0, maxChars);
+      }
+    }
+
+    // Automatically enforces the character limit based on SECRET_KEYWORD.length
+    syncMaxLength();
+
     function updateDisplay(evaluated = false) {
       const val = passwordInput.value;
       inputDisplay.innerHTML = '';
@@ -80,6 +92,10 @@
     }
 
     passwordInput.addEventListener('input', () => {
+      syncMaxLength();
+      if (passwordInput.value.length > SECRET_KEYWORD.length) {
+        passwordInput.value = passwordInput.value.slice(0, SECRET_KEYWORD.length);
+      }
       if (isEvaluated) {
         isEvaluated = false;
       }
