@@ -28,7 +28,7 @@
   </div>
 
   <script>
-    const SECRET_KEYWORD = "Zvīņas"; // Case-insensitive target password
+    const SECRET_KEYWORD = "Zvīņas"; // Case-insensitive target password or sentence[cite: 5]
 
     const passwordInput = document.getElementById('passwordInput');
     const passwordLengthEl = document.getElementById('passwordLength');
@@ -39,17 +39,26 @@
 
     let isEvaluated = false;
 
+    function getWordCount(text) {
+      const trimmed = text.trim();
+      if (!trimmed) return 0;
+      return trimmed.split(/\s+/).length;
+    }
+
     function syncPasswordConfig() {
       const maxChars = SECRET_KEYWORD.length;
+      const wordCount = getWordCount(SECRET_KEYWORD);
+
+      // Keep character length enforcement for the input field[cite: 5]
       passwordInput.maxLength = maxChars;
-      passwordLengthEl.textContent = `Rakstzīmju skaits: ${maxChars}`;
+      passwordLengthEl.textContent = `Vārdu skaits: ${wordCount}`;
 
       if (passwordInput.value.length > maxChars) {
         passwordInput.value = passwordInput.value.slice(0, maxChars);
       }
     }
 
-    // Automatically enforces max length and displays current password length
+    // Automatically enforces max length and displays dynamic word count
     syncPasswordConfig();
 
     function updateDisplay(evaluated = false) {
@@ -70,9 +79,9 @@
         if (evaluated) {
           const charUpper = char.toUpperCase();
           if (secretUpper.includes(charUpper)) {
-            span.className = 'char-orange'; // Symbol exists in target password
+            span.className = 'char-orange'; // Symbol exists in target password[cite: 5]
           } else {
-            span.className = 'char-normal'; // Incorrect symbols retain default text color
+            span.className = 'char-normal'; // Incorrect symbols retain default text color[cite: 5]
           }
         } else {
           span.className = 'char-normal';
@@ -87,7 +96,7 @@
 
       if (!inputVal) return;
 
-      if (inputVal.toUpperCase() === SECRET_KEYWORD.toUpperCase()) {
+      if (inputVal.toUpperCase() === SECRET_KEYWORD.trim().toUpperCase()) {
         gameWindow.classList.add('hidden');
         congratsScreen.classList.add('active');
       } else {
