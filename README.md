@@ -5,4 +5,8 @@
 4. Cik ir 2 + 2? (Piefiksē šo skaitli) (četri)
 
 ## **Final sentence:**
-1 2 3 4 5 četri 7 8
+Šodien mēs redzējām kā izskatās četri kiberdrošības paņēmieni.
+
+Max punkti, ka izdara 1min, pa katru papildus min viens punkts nost...
+
+epv4 <- šo nē, jo testam jau izveidoju, bet citu ez. /link
